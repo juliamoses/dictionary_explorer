@@ -11,7 +11,14 @@ def translate(w):
 	if w in data:
 		return data[w]
 	elif len(get_close_matches(w, data.keys(), cutoff=0.8)) > 0:
-		return "Do you mean %s instead?" % get_close_matches(w, data.keys())[0]
+		y = input("Do you mean %s instead? Press Press y if yes, and n if no: " 
+			% get_close_matches(w, data.keys())[0])
+		if y == "y":
+			return data[get_close_matches(w, data.keys())[0]]
+		elif y == "n":
+			return "Sorry! this word isn't in the dictionary, please double check it."
+		else:
+			return "Sorry! please enter y or n"
 	else:
 		return "Sorry! this word isn't in the dictionary, please double check it."
 
