@@ -16,12 +16,16 @@ def translate(w):
 		if y == "y":
 			return data[get_close_matches(w, data.keys())[0]]
 		elif y == "n":
-			return "Sorry! this word isn't in the dictionary, please double check it."
+			return "Sorry! we couldn't find your word in the dictionary, please double check it."
 		else:
 			return "Sorry! please enter y or n"
 	else:
 		return "Sorry! this word isn't in the dictionary, please double check it."
 
 word = input("Enter a word: ")
-
-print(translate(word))
+output = translate(word)
+if type(output) == list:
+    for item in output:
+        print(item)
+else:
+    print(output)
