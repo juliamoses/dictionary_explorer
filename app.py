@@ -1,4 +1,5 @@
 import json
+from difflib import get_close_matches
 
 # app.py is opening & reading dictionary data
 data = json.load(open("data.json"))
@@ -9,6 +10,8 @@ def translate(w):
 	# if the word is in json dictionary, will give definition
 	if w in data:
 		return data[w]
+	elif len(get_close_matches(w, data.keys(), cutoff=0.8)) > 0:
+		return "Do you mean %s instead?" % get_close_matches(w, data.keys())[0]
 	else:
 		return "Sorry! this word isn't in the dictionary, please double check it."
 
