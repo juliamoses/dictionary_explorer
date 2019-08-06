@@ -5,6 +5,7 @@ data = json.load(open("data.json"))
 
 # returns definition of word
 def translate(w):
+	w = w.lower()
 	# if the word is in json dictionary, will give definition
 	if w in data:
 		return data[w]
