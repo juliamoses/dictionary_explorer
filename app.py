@@ -10,6 +10,11 @@ def translate(w):
 	# if the word is in json dictionary, will give definition
 	if w in data:
 		return data[w]
+	elif w.title() in data: #"texas" checks for "Texas" 
+        return data[w.title()]
+    elif w.upper() in data:
+        return data[w.upper()]
+
 	elif len(get_close_matches(w, data.keys(), cutoff=0.8)) > 0:
 		y = input("Do you mean %s instead? Press Press y if yes, and n if no: " 
 			% get_close_matches(w, data.keys())[0])
